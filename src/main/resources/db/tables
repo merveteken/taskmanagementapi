@@ -1,0 +1,75 @@
+
+drop table if exists role;
+drop table if exists user;
+drop table if exists user_roles;
+
+CREATE TABLE user
+(
+    id  int(11) NOT NULL AUTO_INCREMENT,
+    email    varchar(45) NOT NULL,
+    username varchar(45) NOT NULL,
+    password varchar(64) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY email_UNIQUE (email)
+);
+
+CREATE TABLE role
+(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    name    varchar(45) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users_roles
+(
+    user_id int(11) NOT NULL,
+    role_id int(11) NOT NULL,
+);
+
+CREATE TABLE task
+(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    customer_id int(11) NOT NULL,
+    tasker_id int(11) ,
+    description varchar(255) NOT NULL,
+    price double NOT NULL,
+    date timestamp,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE task_request
+(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    task_id int(11),
+    customer_id int(11),
+    tasker_id int(11) ,
+    task_request_status varchar(255) NOT NULL,
+    quote int(11),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE review
+(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    task_id int(11) ,
+    description varchar(255) NOT NULL,
+    rate int(11),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO role (name) VALUES ('TASKER');
+INSERT INTO role (name) VALUES ('CUSTOMER');
+INSERT INTO role (name) VALUES ('ADMIN');
+
+
+INSERT INTO user (email,username, password) VALUES ('merve@gmail.com','MERVE', '$2a$10$cTUErxQqYVyU2qmQGIktpup5chLEdhD2zpzNEyYqmxrHHJbSNDOG.');
+INSERT INTO user (email,username, password) VALUES ('tuncay@gmail.com','TUNCAY', '$2a$10$.tP2OH3dEG0zms7vek4ated5AiQ.EGkncii0OpCcGq4bckS9NOULu');
+INSERT INTO user (email,username, password) VALUES ('eyup@gmail.com','EYUP', '$2a$10$E2UPv7arXmp3q0LzVzCBNeb4B4AtbTAGjkefVDnSztOwE7Gix6kea');
+INSERT INTO user (email,username, password) VALUES ('test@gmail.com','TEST', '$2a$10$GQT8bfLMaLYwlyUysnGwDu6HMB5G.tin5MKT/uduv2Nez0.DmhnOq');
+INSERT INTO user (email,username, password) VALUES ('admin@gmail.com','admin', '$2a$10$IqTJTjn39IU5.7sSCDQxzu3xug6z/LPU6IF0azE/8CkHCwYEnwBX.');
+
+INSERT INTO users_roles (user_id, role_id) VALUES (1, 1); -- merve has role tasker
+INSERT INTO users_roles (user_id, role_id) VALUES (2, 2); -- tuncay has role customer
+INSERT INTO users_roles (user_id, role_id) VALUES (3, 1); -- eyup has role tasker
+INSERT INTO users_roles (user_id, role_id) VALUES (4, 2); -- test has role customer
+INSERT INTO users_roles (user_id, role_id) VALUES (5, 3); -- admin has role ADMIN

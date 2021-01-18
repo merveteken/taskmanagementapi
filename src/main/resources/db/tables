@@ -8,9 +8,11 @@ CREATE TABLE user
     id  int(11) NOT NULL AUTO_INCREMENT,
     email    varchar(45) NOT NULL,
     username varchar(45) NOT NULL,
+    firstname varchar(45) NOT NULL,
+    lastname varchar(45) NOT NULL,
+    phone varchar(45) NOT NULL,
     password varchar(64) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE KEY email_UNIQUE (email)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE role
@@ -20,10 +22,10 @@ CREATE TABLE role
     PRIMARY KEY (id)
 );
 
-CREATE TABLE users_roles
+CREATE TABLE user_roles
 (
     user_id int(11) NOT NULL,
-    role_id int(11) NOT NULL,
+    role_id int(11) NOT NULL
 );
 
 CREATE TABLE task

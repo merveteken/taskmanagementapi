@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Table(schema = "public")
 public class TaskRequest {
 
     @Column

@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@Table(schema = "public")
 public class User {
 
     @Id
@@ -37,7 +38,7 @@ public class User {
     private String lastname;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLES",
+    @JoinTable(name = "USER_ROLES",schema = "public",
             joinColumns = {
                     @JoinColumn(name = "USER_ID")
             },

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(schema = "public")
 public class Task {
 
     @Id

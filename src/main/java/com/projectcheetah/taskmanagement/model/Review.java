@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Table(schema = "public")
 public class Review {
 
     @Column

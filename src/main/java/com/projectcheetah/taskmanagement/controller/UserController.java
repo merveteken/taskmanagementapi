@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:4200","https://projectcheetah.herokuapp.com"})
+@CrossOrigin(origins = {"http://localhost:4200","https://cheetahtaskmanagement.herokuapp.com"})
 @RestController
 @RequestMapping("/users")
 public class UserController {

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200","https://projectcheetah.herokuapp.com"})
 @Controller
 @RequestMapping("/tasks")
 public class TaskController {

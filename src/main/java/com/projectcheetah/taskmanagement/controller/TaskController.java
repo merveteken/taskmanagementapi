@@ -18,19 +18,21 @@ import java.text.ParseException;
 import java.util.List;
 
 @Controller@CrossOrigin(origins = {"http://localhost:4200","https://cheetahtaskmanagement.herokuapp.com"})
-
+@PreAuthorize("hasRole('CUSTOMER') or hasRole('TASKER')")
 @RequestMapping("/tasks")
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
+    @PreAuthorize("hasRole('CUSTOMER') or hasRole('TASKER')")
     @PostMapping()
     public ResponseEntity<Task> createTask(@RequestBody TaskDto taskDto) throws ParseException {
        Task task =  taskService.saveTask(taskDto);
         return new ResponseEntity<>(task,HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('CUSTOMER') or hasRole('TASKER')")
     @PostMapping("/sendRequest")
     public ResponseEntity<TaskRequest> sendTaskRequest(@RequestBody TaskRequestDto taskRequestDto) throws ParseException {
         TaskRequest task =  taskService.sendRequest(taskRequestDto);
@@ -43,17 +45,19 @@ public class TaskController {
         return new ResponseEntity<>(taskService.getTasksById(id),HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('CUSTOMER') or hasRole('TASKER')")
     @GetMapping()
     public ResponseEntity<List<Task>> getallTasks() throws Exception {
         return new ResponseEntity<>(taskService.getTasks(),HttpStatus.OK);
     }
 
-
+    @PreAuthorize("hasRole('CUSTOMER') or hasRole('TASKER')")
     @GetMapping("/allrequest")
     public ResponseEntity<List<TaskRequest>> getallTaskReq() throws Exception {
         return new ResponseEntity<>(taskService.getAllTaskRequest(),HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('CUSTOMER') or hasRole('TASKER')")
     @GetMapping("/tasker")
     public ResponseEntity<List<TaskAndRequest>> getTaskerTaskReq(@RequestParam Long taskerId) throws Exception {
         return new ResponseEntity<>(taskService.getTaskerRequests(taskerId),HttpStatus.OK);

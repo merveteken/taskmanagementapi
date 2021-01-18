@@ -1,3 +1,3 @@
-INSERT INTO role (name) VALUES ('TASKER');
-INSERT INTO role (name) VALUES ('CUSTOMER');
-INSERT INTO role (name) VALUES ('ADMIN');
+INSERT INTO public.role (name) VALUES ('TASKER');
+INSERT INTO public.role (name) VALUES ('CUSTOMER');
+INSERT INTO public.role (name) VALUES ('ADMIN');
